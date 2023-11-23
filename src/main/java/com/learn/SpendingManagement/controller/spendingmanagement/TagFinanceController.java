@@ -1,13 +1,13 @@
-package com.learn.SpendingManagement.controller.user;
+package com.learn.SpendingManagement.controller.spendingmanagement;
 
 import com.learn.SpendingManagement.dto.base.PageResponse;
 import com.learn.SpendingManagement.dto.base.PageResponseGeneral;
 import com.learn.SpendingManagement.dto.base.ResponseGeneral;
-import com.learn.SpendingManagement.dto.request.user.UserRequest;
-import com.learn.SpendingManagement.dto.response.User.UserResponse;
-import com.learn.SpendingManagement.facade.UserFacadeService;
+import com.learn.SpendingManagement.dto.request.spendingmanagement.TagFinanceRequest;
+import com.learn.SpendingManagement.dto.response.spendingmanagement.TagFinanceResponse;
+import com.learn.SpendingManagement.facade.TagFinanceFacadeService;
 import com.learn.SpendingManagement.service.MessageService;
-import com.learn.SpendingManagement.service.user.UserService;
+import com.learn.SpendingManagement.service.spendingmanagement.TagFinanceService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,40 +19,39 @@ import static com.learn.SpendingManagement.constant.Constants.CommonConstants.LA
 import static com.learn.SpendingManagement.constant.Constants.MessageCode.*;
 
 @Slf4j
-@RestController
-@RequestMapping("api/v1/users")
 @RequiredArgsConstructor
-
-public class UserController {
-  private final UserFacadeService userFacadeService;
-  private final UserService userService;
+@RestController
+@RequestMapping("api/v1/tag-finances")
+public class TagFinanceController {
+  private final TagFinanceFacadeService tagFinanceFacadeService;
+  private final TagFinanceService tagFinanceService;
   private final MessageService messageService;
 
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping
-  public ResponseGeneral<UserResponse> create(
-        @Valid @RequestBody UserRequest request,
+  public ResponseGeneral<TagFinanceResponse> create(
+        @Valid @RequestBody TagFinanceRequest request,
         @RequestHeader(name = LANGUAGE, defaultValue = DEFAULT_LANGUAGE) String language
   ) {
     log.info("(create)request: {}", request);
 
     return ResponseGeneral.ofCreated(
-          messageService.getMessage(CREATE_USER, language),
-          userFacadeService.create(request)
+          messageService.getMessage(CREATE_TAG_FINANCE, language),
+          tagFinanceFacadeService.create(request)
     );
   }
 
   @PutMapping("{id}")
-  public ResponseGeneral<UserResponse> update(
-        @Valid @RequestBody UserRequest request,
+  public ResponseGeneral<TagFinanceResponse> update(
+        @Valid @RequestBody TagFinanceRequest request,
         @PathVariable String id,
         @RequestHeader(name = LANGUAGE, defaultValue = DEFAULT_LANGUAGE) String language
   ) {
-    log.info("(update)request: {},{}", request, id);
+    log.info("(update)request: {}", request);
 
     return ResponseGeneral.ofSuccess(
-          messageService.getMessage(UPDATE_USER, language),
-          userFacadeService.update(request, id)
+          messageService.getMessage(UPDATE_TAG_FINANCE, language),
+          tagFinanceService.update(request, id)
     );
   }
 
@@ -61,37 +60,36 @@ public class UserController {
         @PathVariable String id,
         @RequestHeader(name = LANGUAGE, defaultValue = DEFAULT_LANGUAGE) String language
   ) {
-    log.info("(delete) request:{}", id);
-    userService.delete(id);
+    log.info("(create)request: {}", id);
+    tagFinanceService.delete(id);
     return ResponseGeneral.ofSuccess(
-          messageService.getMessage(DELETE_USER, language)
-    );
+          messageService.getMessage(DELETE_TAG_FINANCE, language));
   }
 
-  @GetMapping
-  public PageResponseGeneral<PageResponse<UserResponse>> list(
+  @GetMapping("{id}")
+  public PageResponseGeneral<PageResponse<TagFinanceResponse>> list(
         @RequestParam(name = "keyword", required = false) String keyword,
         @RequestParam(name = "size", defaultValue = "10") int size,
         @RequestParam(name = "page", defaultValue = "0") int page,
         @RequestParam(name = "all", defaultValue = "false", required = false) boolean isAll,
+        @PathVariable String id,
         @RequestHeader(name = LANGUAGE, defaultValue = DEFAULT_LANGUAGE) String language
   ) {
-    log.info("(list) keyword: {}, size : {}, page: {}, isAll: {}", keyword, size, page, isAll);
-    return PageResponseGeneral.ofSuccess(messageService.getMessage(LIST_USER, language),
-          userService.list(keyword, size, page, isAll)
+    log.info("(list) keyword: {}, size : {}, page: {}, isAll: {}, username: {}", keyword, size, page, isAll, id);
+    return PageResponseGeneral.ofSuccess(messageService.getMessage(LIST_TAG_FINANCE, language),
+          tagFinanceService.list(keyword, size, page, isAll, id)
     );
   }
-
-  @GetMapping("{id}")
-  public ResponseGeneral<UserResponse> detail(
+  @GetMapping("/details/{id}")
+  public ResponseGeneral<TagFinanceResponse> detail(
         @PathVariable String id,
         @RequestHeader(name = LANGUAGE, defaultValue = DEFAULT_LANGUAGE) String language
   ) {
     log.info("(detail) request: {}", id);
 
-    return ResponseGeneral.ofCreated(
-          messageService.getMessage(DETAIL_USER, language),
-          userService.detail(id)
+    return ResponseGeneral.ofSuccess(
+          messageService.getMessage(LIST_TAG_FINANCE, language),
+          tagFinanceFacadeService.detail(id)
     );
   }
 }

@@ -1,7 +1,7 @@
 package com.learn.SpendingManagement.service.impl.user;
 
 import com.learn.SpendingManagement.dto.base.PageResponse;
-import com.learn.SpendingManagement.dto.request.User.AddressRequest;
+import com.learn.SpendingManagement.dto.request.user.AddressRequest;
 import com.learn.SpendingManagement.dto.response.User.AddressResponse;
 import com.learn.SpendingManagement.entity.user.Address;
 import com.learn.SpendingManagement.exception.user.AddressNotFoundException;

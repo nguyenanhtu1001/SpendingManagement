@@ -1,6 +1,6 @@
 package com.learn.SpendingManagement.facade.impl;
 
-import com.learn.SpendingManagement.dto.request.User.UserRequest;
+import com.learn.SpendingManagement.dto.request.user.UserRequest;
 import com.learn.SpendingManagement.dto.response.User.AccountResponse;
 import com.learn.SpendingManagement.dto.response.User.AddressResponse;
 import com.learn.SpendingManagement.dto.response.User.RoleResponse;

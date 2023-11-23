@@ -3,7 +3,7 @@ package com.learn.SpendingManagement.controller.user;
 import com.learn.SpendingManagement.dto.base.PageResponse;
 import com.learn.SpendingManagement.dto.base.PageResponseGeneral;
 import com.learn.SpendingManagement.dto.base.ResponseGeneral;
-import com.learn.SpendingManagement.dto.request.User.RoleRequest;
+import com.learn.SpendingManagement.dto.request.user.RoleRequest;
 import com.learn.SpendingManagement.dto.response.User.RoleResponse;
 import com.learn.SpendingManagement.service.MessageService;
 import com.learn.SpendingManagement.service.user.RoleService;

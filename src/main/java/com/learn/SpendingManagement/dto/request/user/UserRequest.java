@@ -1,4 +1,4 @@
-package com.learn.SpendingManagement.dto.request.User;
+package com.learn.SpendingManagement.dto.request.user;
 
 import com.learn.SpendingManagement.annotation.ValidationEmail;
 import com.learn.SpendingManagement.annotation.ValidationPhoneNumber;
@@ -13,17 +13,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserRequest {
-  @NotBlank
+  @NotBlank(message = "addressId not blank")
   private String addressId;
-  @NotBlank
+  @NotBlank(message = "accountId not blank")
   private String accountId;
-  @NotBlank
+  @NotBlank(message = "roleId not blank")
   private String roleId;
   @ValidationEmail
   private String email;
   @ValidationPhoneNumber
   private String phone;
-  @NotBlank
+  @NotBlank(message = "fullName not blank")
   private String fullName;
 
 }

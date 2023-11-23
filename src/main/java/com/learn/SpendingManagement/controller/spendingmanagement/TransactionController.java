@@ -1,12 +1,12 @@
-package com.learn.SpendingManagement.controller.user;
+package com.learn.SpendingManagement.controller.spendingmanagement;
 
 import com.learn.SpendingManagement.dto.base.PageResponse;
 import com.learn.SpendingManagement.dto.base.PageResponseGeneral;
 import com.learn.SpendingManagement.dto.base.ResponseGeneral;
-import com.learn.SpendingManagement.dto.request.user.AddressRequest;
-import com.learn.SpendingManagement.dto.response.User.AddressResponse;
+import com.learn.SpendingManagement.dto.request.spendingmanagement.TransactionRequest;
+import com.learn.SpendingManagement.dto.response.spendingmanagement.TransactionResponse;
 import com.learn.SpendingManagement.service.MessageService;
-import com.learn.SpendingManagement.service.user.AddressService;
+import com.learn.SpendingManagement.service.spendingmanagement.TransactionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,38 +18,38 @@ import static com.learn.SpendingManagement.constant.Constants.CommonConstants.LA
 import static com.learn.SpendingManagement.constant.Constants.MessageCode.*;
 
 @Slf4j
-@RestController
-@RequestMapping("api/v1/addresses")
 @RequiredArgsConstructor
-public class AddressController {
-  private final AddressService addressService;
+@RestController
+@RequestMapping("api/v1/transactions")
+public class TransactionController {
+  private final TransactionService transactionService;
   private final MessageService messageService;
 
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping
-  public ResponseGeneral<AddressResponse> create(
-        @Valid @RequestBody AddressRequest request,
+  public ResponseGeneral<TransactionResponse> create(
+        @Valid @RequestBody TransactionRequest request,
         @RequestHeader(name = LANGUAGE, defaultValue = DEFAULT_LANGUAGE) String language
   ) {
     log.info("(create)request: {}", request);
 
     return ResponseGeneral.ofCreated(
-          messageService.getMessage(CREATE_ACCOUNT, language),
-          addressService.create(request)
+          messageService.getMessage(CREATE_TRANSACTION, language),
+          transactionService.create(request)
     );
   }
 
   @PutMapping("{id}")
-  public ResponseGeneral<AddressResponse> update(
-        @Valid @RequestBody AddressRequest request,
+  public ResponseGeneral<TransactionResponse> update(
+        @Valid @RequestBody TransactionRequest request,
         @PathVariable String id,
         @RequestHeader(name = LANGUAGE, defaultValue = DEFAULT_LANGUAGE) String language
   ) {
     log.info("(update)request: {}", request);
 
     return ResponseGeneral.ofSuccess(
-          messageService.getMessage(UPDATE_ACCOUNT, language),
-          addressService.update(request, id)
+          messageService.getMessage(UPDATE_TRANSACTION, language),
+          transactionService.update(request, id)
     );
   }
 
@@ -58,25 +58,24 @@ public class AddressController {
         @PathVariable String id,
         @RequestHeader(name = LANGUAGE, defaultValue = DEFAULT_LANGUAGE) String language
   ) {
-    log.info("(delete)request: {}", id);
-
-    addressService.delete(id);
+    log.info("(create)request: {}", id);
+    transactionService.delete(id);
     return ResponseGeneral.ofSuccess(
-          messageService.getMessage(DELETE_ACCOUNT, language)
-    );
+          messageService.getMessage(DELETE_TRANSACTION, language));
   }
 
-  @GetMapping
-  public PageResponseGeneral<PageResponse<AddressResponse>> list(
+  @GetMapping("{tagId}")
+  public PageResponseGeneral<PageResponse<TransactionResponse>> list(
         @RequestParam(name = "keyword", required = false) String keyword,
         @RequestParam(name = "size", defaultValue = "10") int size,
         @RequestParam(name = "page", defaultValue = "0") int page,
         @RequestParam(name = "all", defaultValue = "false", required = false) boolean isAll,
+        @PathVariable String tagId,
         @RequestHeader(name = LANGUAGE, defaultValue = DEFAULT_LANGUAGE) String language
   ) {
-    log.info("(list) keyword: {}, size : {}, page: {}, isAll: {}", keyword, size, page, isAll);
-    return PageResponseGeneral.ofSuccess(messageService.getMessage(LIST, language),
-          addressService.list(keyword, size, page, isAll)
+    log.info("(list) keyword: {}, size : {}, page: {}, isAll: {}, tagId: {}", keyword, size, page, isAll, tagId);
+    return PageResponseGeneral.ofSuccess(messageService.getMessage(LIST_TRANSACTION, language),
+          transactionService.list(keyword, size, page, isAll, tagId)
     );
   }
 

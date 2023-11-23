@@ -1,4 +1,4 @@
-package com.learn.SpendingManagement.dto.request.User;
+package com.learn.SpendingManagement.dto.request.user;
 
 import com.learn.SpendingManagement.annotation.ValidationPassword;
 import com.learn.SpendingManagement.annotation.ValidationUsername;
@@ -11,13 +11,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class AccountUpdateRequest {
+public class AccountRequest {
   @ValidationUsername
   private String username;
-  private String oldPassword;
   @ValidationPassword
-  private String newPassword;
-  @ValidationPassword
-  private String confirmPassword;
+  private String password;
+//  @NotBlank(message = "RoleId not blank")
   private String roleId;
 }

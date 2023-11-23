@@ -1,7 +1,7 @@
 package com.learn.SpendingManagement.service.user;
 
 import com.learn.SpendingManagement.dto.base.PageResponse;
-import com.learn.SpendingManagement.dto.request.User.AddressRequest;
+import com.learn.SpendingManagement.dto.request.user.AddressRequest;
 import com.learn.SpendingManagement.dto.response.User.AddressResponse;
 
 public interface AddressService {

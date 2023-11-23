@@ -1,7 +1,7 @@
 package com.learn.SpendingManagement.service.impl.user;
 
 import com.learn.SpendingManagement.dto.base.PageResponse;
-import com.learn.SpendingManagement.dto.request.User.RoleRequest;
+import com.learn.SpendingManagement.dto.request.user.RoleRequest;
 import com.learn.SpendingManagement.dto.response.User.RoleResponse;
 import com.learn.SpendingManagement.entity.user.Role;
 import com.learn.SpendingManagement.exception.user.RoleAlreadyExistException;

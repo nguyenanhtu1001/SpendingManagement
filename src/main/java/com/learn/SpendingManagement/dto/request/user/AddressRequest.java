@@ -1,4 +1,4 @@
-package com.learn.SpendingManagement.dto.request.User;
+package com.learn.SpendingManagement.dto.request.user;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

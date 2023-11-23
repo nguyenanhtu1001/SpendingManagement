@@ -1,8 +1,8 @@
 package com.learn.SpendingManagement.service.impl.user;
 
 import com.learn.SpendingManagement.dto.base.PageResponse;
-import com.learn.SpendingManagement.dto.request.User.AccountRequest;
-import com.learn.SpendingManagement.dto.request.User.AccountUpdateRequest;
+import com.learn.SpendingManagement.dto.request.user.AccountRequest;
+import com.learn.SpendingManagement.dto.request.user.AccountUpdateRequest;
 import com.learn.SpendingManagement.dto.response.User.AccountResponse;
 import com.learn.SpendingManagement.dto.response.User.LoginResponse;
 import com.learn.SpendingManagement.entity.user.Account;

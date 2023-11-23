@@ -46,7 +46,14 @@ public class Constants {
     public static final String DELETE_USER="com.learn.SpendingManagement.controller.user.delete";
     public static final String LIST_USER="com.learn.SpendingManagement.controller.user.list";
     public static final String DETAIL_USER="com.learn.SpendingManagement.controller.user.detail";
-
+    public static final String CREATE_TAG_FINANCE="com.learn.SpendingManagement.controller.spendingmanagement.TagFinanceController.create";
+    public static final String CREATE_TRANSACTION="com.learn.SpendingManagement.controller.spendingmanagement.TransactionController.create";
+    public static final String UPDATE_TAG_FINANCE="com.learn.SpendingManagement.controller.spendingmanagement.TagFinanceController.update";
+    public static final String LIST_TAG_FINANCE="com.learn.SpendingManagement.controller.spendingmanagement.TagFinanceController.list";
+    public static final String DELETE_TAG_FINANCE="com.learn.SpendingManagement.controller.spendingmanagement.TagFinanceController.delete";
+    public static final String UPDATE_TRANSACTION="com.learn.SpendingManagement.controller.spendingmanagement.TransactionController.update";
+    public static final String DELETE_TRANSACTION="com.learn.SpendingManagement.controller.spendingmanagement.TransactionController.delete";
+    public static final String LIST_TRANSACTION="com.learn.SpendingManagement.controller.spendingmanagement.TransactionController.list";
 
 
 

@@ -1,7 +1,7 @@
 package com.learn.SpendingManagement.service.impl.user;
 
 import com.learn.SpendingManagement.dto.base.PageResponse;
-import com.learn.SpendingManagement.dto.request.User.UserRequest;
+import com.learn.SpendingManagement.dto.request.user.UserRequest;
 import com.learn.SpendingManagement.dto.response.User.UserResponse;
 import com.learn.SpendingManagement.entity.user.User;
 import com.learn.SpendingManagement.exception.user.EmailAlreadyExistException;

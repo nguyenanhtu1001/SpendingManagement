@@ -6,7 +6,7 @@
 
     <changeSet author="nguyenanhtu002" id="transaction.xml">
         <createTable tableName="transactions">
-            <column name="id" type="INT">
+            <column name="id" type="VARCHAR(255)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="tag_finance_id" type="VARCHAR(255)">
