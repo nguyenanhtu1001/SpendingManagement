@@ -16,9 +16,7 @@ public class UserRequest {
   @NotBlank(message = "addressId not blank")
   private String addressId;
   @NotBlank(message = "accountId not blank")
-  private String accountId;
-  @NotBlank(message = "roleId not blank")
-  private String roleId;
+  private String accountId;;
   @ValidationEmail
   private String email;
   @ValidationPhoneNumber

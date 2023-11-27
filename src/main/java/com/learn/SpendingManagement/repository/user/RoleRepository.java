@@ -17,18 +17,16 @@ public interface RoleRepository extends BaseRepository<Role> {
         """)
   boolean checkExist(String name);
 
-  @Query("""
-         SELECT new com.learn.SpendingManagement.dto.response.User.RoleResponse
-        (r.id,r.name, r.description)
-         FROM Role r
-         WHERE(:keyword is null or
-        (lower(r.name) LIKE lower(concat('%', :keyword, '%'))) OR
-        (lower(r.description) LIKE lower(concat('%', :keyword, '%')))
-        AND r.isDeleted =false
-        )
-        """)
-  Page<RoleResponse> search(Pageable pageable, String keyword);
-
+@Query("""
+       SELECT new com.learn.SpendingManagement.dto.response.User.RoleResponse
+      (r.id,r.name, r.description)
+       FROM Role r
+       WHERE (:keyword is null or
+      (lower(r.name) LIKE lower(concat('%', :keyword, '%'))) OR
+      (lower(r.description) LIKE lower(concat('%', :keyword, '%')))
+      ) AND r.isDeleted = false
+      """)
+Page<RoleResponse> search(Pageable pageable, String keyword);
   @Query("""
          SELECT new com.learn.SpendingManagement.dto.response.User.RoleResponse
         (r.id,r.name, r.description)

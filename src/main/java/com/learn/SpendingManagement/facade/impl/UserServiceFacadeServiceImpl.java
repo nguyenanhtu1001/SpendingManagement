@@ -29,10 +29,8 @@ public class UserServiceFacadeServiceImpl implements UserFacadeService {
     UserResponse response = userService.create(request);
     AccountResponse accountResponse = accountService.detail(request.getAccountId());
     AddressResponse addressResponse = addressService.detail(request.getAddressId());
-    RoleResponse roleResponse = roleService.detail(request.getRoleId());
     response.setAccountResponse(accountResponse);
     response.setAddressResponse(addressResponse);
-    response.setRoleResponse(roleResponse);
     return response;
   }
 
@@ -43,10 +41,8 @@ public class UserServiceFacadeServiceImpl implements UserFacadeService {
     UserResponse response = userService.update(request, id);
     AccountResponse accountResponse = accountService.detail(request.getAccountId());
     AddressResponse addressResponse = addressService.detail(request.getAddressId());
-    RoleResponse roleResponse = roleService.detail(request.getRoleId());
     response.setAccountResponse(accountResponse);
     response.setAddressResponse(addressResponse);
-    response.setRoleResponse(roleResponse);
     return response;
   }
 
